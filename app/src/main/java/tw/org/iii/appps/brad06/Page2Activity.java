@@ -23,7 +23,11 @@ public class Page2Activity extends AppCompatActivity {
         mesg.setText("" + lottery);
 
 
+    }
 
-
+    @Override
+    public void finish() {
+        setResult(RESULT_CANCELED);
+        super.finish();
     }
 }

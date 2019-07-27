@@ -88,6 +88,12 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         Log.v("brad", "onActivityResult:" + requestCode);
+
+        if (requestCode == 2){
+            Log.v("brad", "=> " + (RESULT_OK == resultCode));
+        }
+
+
     }
 
     public void toPage2(View view) {

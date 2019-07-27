@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class Page2Activity extends AppCompatActivity {
@@ -16,6 +17,9 @@ public class Page2Activity extends AppCompatActivity {
 
         mesg = findViewById(R.id.mesg);
 
+        Log.v("brad", "var2:" + MainApp.var2);
+        MainApp.var2++;
+
 
         Intent intent = getIntent();
         int lottery = intent.getIntExtra("lottery", -1);
@@ -27,7 +31,9 @@ public class Page2Activity extends AppCompatActivity {
 
     @Override
     public void finish() {
-        setResult(RESULT_CANCELED);
+        Intent intent = new Intent();
+        intent.putExtra("name", "Brad");
+        setResult(RESULT_OK, intent);
         super.finish();
     }
 }

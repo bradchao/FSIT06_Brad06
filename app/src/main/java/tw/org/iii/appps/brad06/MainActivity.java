@@ -15,11 +15,21 @@ public class MainActivity extends AppCompatActivity {
     private int lottery;
     private long start;
 
+    private MainApp mainApp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.v("brad", "onCreate");
+
+        Log.v("brad", "var2:" + MainApp.var2);
+        mainApp = (MainApp) getApplication();
+
+        Log.v("brad", "var1:" + mainApp.var1);
+
+        mainApp.var1++;
+        MainApp.var2++;
 
         start = System.currentTimeMillis();
 
@@ -89,8 +99,9 @@ public class MainActivity extends AppCompatActivity {
 
         Log.v("brad", "onActivityResult:" + requestCode);
 
-        if (requestCode == 2){
-            Log.v("brad", "=> " + (RESULT_OK == resultCode));
+        if (requestCode == 2 && resultCode == RESULT_OK){
+            String name = data.getStringExtra("name");
+            Log.v("brad", name);
         }
 
 

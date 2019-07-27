@@ -19,8 +19,18 @@ public class MainActivity extends AppCompatActivity {
         Log.v("brad", "onCreate");
 
         tv = findViewById(R.id.tv);
+    }
 
+    @Override
+    public void finish() {
+        super.finish();
+        Log.v("brad", "finish");
+    }
 
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        Log.v("brad", "onBackPressed");
     }
 
     @Override

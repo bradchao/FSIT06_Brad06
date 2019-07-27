@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tv;
+    private int lottery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.v("brad", "onStart");
-        tv.setText("" + (int)(Math.random()*49+1));
+        lottery = (int)(Math.random()*49+1);
+        tv.setText("" + lottery);
     }
 
     @Override
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void toPage2(View view) {
         Intent intent = new Intent(this, Page2Activity.class);
+        intent.putExtra("lottery", lottery);
         startActivity(intent);
 
     }

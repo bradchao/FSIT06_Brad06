@@ -6,24 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Page3Activity">
 
     <TextView
-        android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="I am Page3"
         android:textSize="24sp"
         />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="toPage2"
-        android:text="To Page2"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="toPage3"
-        android:text="To Page3"
-        />
+
 </LinearLayout>

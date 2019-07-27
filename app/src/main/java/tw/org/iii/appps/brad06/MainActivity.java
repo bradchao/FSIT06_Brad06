@@ -1,5 +1,6 @@
 package tw.org.iii.appps.brad06;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,16 +8,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tv;
     private int lottery;
+    private long start;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.v("brad", "onCreate");
+
+        start = System.currentTimeMillis();
 
         tv = findViewById(R.id.tv);
     }
@@ -29,7 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        if (System.currentTimeMillis() - start >= 3*1000){
+            start = System.currentTimeMillis();
+            Toast.makeText(this, "Back one more", Toast.LENGTH_SHORT).show();
+        }else{
+            super.onBackPressed();
+        }
+
         Log.v("brad", "onBackPressed");
     }
 
@@ -72,10 +83,24 @@ public class MainActivity extends AppCompatActivity {
         Log.v("brad", "onRestart");
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.v("brad", "onActivityResult:" + requestCode);
+    }
+
     public void toPage2(View view) {
         Intent intent = new Intent(this, Page2Activity.class);
         intent.putExtra("lottery", lottery);
-        startActivity(intent);
+        //startActivity(intent);
+        startActivityForResult(intent, 2);
 
+    }
+
+    public void toPage3(View view) {
+        Intent intent = new Intent(this, Page3Activity.class);
+        //startActivity(intent);
+        startActivityForResult(intent, 3);
     }
 }
